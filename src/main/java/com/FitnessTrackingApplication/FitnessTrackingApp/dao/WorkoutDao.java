@@ -1,6 +1,5 @@
 package com.FitnessTrackingApplication.FitnessTrackingApp.dao;
 
-import com.FitnessTrackingApplication.FitnessTrackingApp.dto.WorkoutDto;
 import com.FitnessTrackingApplication.FitnessTrackingApp.entity.WorkoutEntity;
 import com.FitnessTrackingApplication.FitnessTrackingApp.repository.WorkoutRepo;
 import org.springframework.beans.factory.annotation.Autowired;

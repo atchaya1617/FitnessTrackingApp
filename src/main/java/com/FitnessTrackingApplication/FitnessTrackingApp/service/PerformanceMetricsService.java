@@ -37,14 +37,15 @@ public class PerformanceMetricsService {
     public ResponseStructure<PerformanceMetricsEntity> updatePerformanceMetrics(PerformanceMetricsEntity adhar, int id) {
         ResponseStructure<PerformanceMetricsEntity> structure = new ResponseStructure<PerformanceMetricsEntity>();
         PerformanceMetricsEntity exPerformanceMetrics = performanceMetricsDao.findById(id);
-        if(exPerformanceMetrics!=null) {
+        if(exPerformanceMetrics != null){
             structure.setData(exPerformanceMetrics);
-            structure.setMessage("performanceMetrics updated successfully");
+            structure.setMessage("PerformanceMetrics updated successfully");
             structure.setStatus(HttpStatus.OK.value());
-            return structure;
+        return structure;
             //return dao.updatePerformanceMetrics(exPerformanceMetrics, id);
         }return null; //exception for PerformanceMetrics not found for the given id
     }
+
 
     public ResponseStructure<PerformanceMetricsEntity> deletePerformanceMetrics(int id){
         ResponseStructure<PerformanceMetricsEntity> structure = new ResponseStructure<PerformanceMetricsEntity>();

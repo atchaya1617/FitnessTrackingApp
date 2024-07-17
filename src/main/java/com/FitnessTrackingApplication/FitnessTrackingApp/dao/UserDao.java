@@ -1,6 +1,5 @@
 package com.FitnessTrackingApplication.FitnessTrackingApp.dao;
 
-import com.FitnessTrackingApplication.FitnessTrackingApp.dto.UserDto;
 import com.FitnessTrackingApplication.FitnessTrackingApp.entity.UserEntity;
 import com.FitnessTrackingApplication.FitnessTrackingApp.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ public class UserDao {
     @Autowired
     UserRepo userRepo;
 
-    public UserEntity saveUser(UserDto userEntity) {
+    public UserEntity saveUser(UserEntity userEntity) {
 
         return userRepo.save(userEntity);
 

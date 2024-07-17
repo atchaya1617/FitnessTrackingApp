@@ -1,6 +1,5 @@
 package com.FitnessTrackingApplication.FitnessTrackingApp.controller;
 
-import com.FitnessTrackingApplication.FitnessTrackingApp.dto.PerformanceMetricsDto;
 import com.FitnessTrackingApplication.FitnessTrackingApp.entity.PerformanceMetricsEntity;
 import com.FitnessTrackingApplication.FitnessTrackingApp.service.PerformanceMetricsService;
 import com.FitnessTrackingApplication.FitnessTrackingApp.utill.ResponseStructure;

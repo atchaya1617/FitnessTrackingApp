@@ -1,7 +1,6 @@
 package com.FitnessTrackingApplication.FitnessTrackingApp.service;
 
 import com.FitnessTrackingApplication.FitnessTrackingApp.dao.WorkoutDao;
-import com.FitnessTrackingApplication.FitnessTrackingApp.dto.WorkoutDto;
 import com.FitnessTrackingApplication.FitnessTrackingApp.entity.WorkoutEntity;
 import com.FitnessTrackingApplication.FitnessTrackingApp.utill.ResponseStructure;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,9 @@ public class WorkoutService {
     WorkoutDao workoutDao;
 
 
-    public ResponseStructure<WorkoutDto> saveWorkout(WorkoutDto workout) {
-        ResponseStructure<WorkoutDto> structure = new ResponseStructure<WorkoutDto>();
-        WorkoutEntity savedWorkout = workoutDao.saveWorkout(workout);
+    public ResponseStructure<WorkoutEntity> saveWorkout(WorkoutEntity workout) {
+        ResponseStructure<WorkoutEntity> structure = new ResponseStructure<WorkoutEntity>();
+        WorkoutEntity savedWorkout = workoutDao.saveworkout(workout);
         if(savedWorkout !=null) {
             structure.setData(savedWorkout);
             structure.setMessage("workout saved success");
@@ -27,8 +26,8 @@ public class WorkoutService {
         }return null; // exception workout not saved
     }
 
-    public ResponseStructure<WorkoutDto> findWorkout(int id){
-        ResponseStructure<WorkoutDto> structure = new ResponseStructure<WorkoutDto>();
+    public ResponseStructure<WorkoutEntity> findWorkout(int id){
+        ResponseStructure<WorkoutEntity> structure = new ResponseStructure<WorkoutEntity>();
         WorkoutEntity exWorkout = workoutDao.findById(id);
         if(exWorkout!= null) {
             structure.setData(exWorkout);
@@ -38,8 +37,8 @@ public class WorkoutService {
         }return null; // exception for workout not found for the given id
     }
 
-    public ResponseStructure<WorkoutDto> updateWorkout(WorkoutDto workout, int id) {
-        ResponseStructure<WorkoutDto> structure = new ResponseStructure<WorkoutDto>();
+    public ResponseStructure<WorkoutEntity> updateWorkout(WorkoutEntity workout, int id) {
+        ResponseStructure<WorkoutEntity> structure = new ResponseStructure<WorkoutEntity>();
         WorkoutEntity exWorkout = workoutDao.findById(id);
         if(exWorkout!=null) {
             structure.setData(exWorkout);
@@ -50,8 +49,8 @@ public class WorkoutService {
         }return null; //exception for workout not found for the given id
     }
 
-    public ResponseStructure<WorkoutDto> deleteWorkout(int id){
-        ResponseStructure<WorkoutDto> structure = new ResponseStructure<WorkoutDto>();
+    public ResponseStructure<WorkoutEntity> deleteWorkout(int id){
+        ResponseStructure<WorkoutEntity> structure = new ResponseStructure<WorkoutEntity>();
         WorkoutEntity exWorkout = workoutDao.findById(id);
         if(exWorkout!=null) {
             structure.setData(exWorkout);

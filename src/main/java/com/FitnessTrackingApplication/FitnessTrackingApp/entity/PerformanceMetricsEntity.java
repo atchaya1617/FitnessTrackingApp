@@ -4,10 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
-
+@Getter
+@Setter
 
 public class PerformanceMetricsEntity {
     @Id
@@ -15,28 +18,4 @@ public class PerformanceMetricsEntity {
     private int id;
     private Double duration;
     private Integer caloriesBurned;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Double getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Double duration) {
-        this.duration = duration;
-    }
-
-    public Integer getCaloriesBurned() {
-        return caloriesBurned;
-    }
-
-    public void setCaloriesBurned(Integer caloriesBurned) {
-        this.caloriesBurned = caloriesBurned;
-    }
 }
