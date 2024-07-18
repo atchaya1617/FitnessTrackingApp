@@ -2,43 +2,26 @@ package com.FitnessTrackingApplication.FitnessTrackingApp.dao;
 
 import com.FitnessTrackingApplication.FitnessTrackingApp.entity.PerformanceMetricsEntity;
 import com.FitnessTrackingApplication.FitnessTrackingApp.repository.PerformanceMetricsRepo;
+import com.FitnessTrackingApplication.FitnessTrackingApp.utill.ResponseStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
-public class PerformanceMetricsDao {
+public interface PerformanceMetricsDao {
+//
+//    @Autowired
+//    PerformanceMetricsRepo performanceMetricsRepo;
 
-    @Autowired
-    PerformanceMetricsRepo performanceMetricsRepo;
+       public PerformanceMetricsEntity findById ( int id);
+    public ResponseStructure<PerformanceMetricsEntity> savePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity);
+    public ResponseStructure<PerformanceMetricsEntity> findPerformanceMetrics(int id);
+    public ResponseStructure<PerformanceMetricsEntity> updatePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity, int id );
+    public ResponseStructure<PerformanceMetricsEntity> deletePerformanceMetrics(int id);
 
-    public PerformanceMetricsEntity savePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity) {
-
-        return performanceMetricsRepo.save(performanceMetricsEntity);
+    //       {
+//            Optional<PerformanceMetricsEntity> optionalPerformanceMetricsEntity = performanceMetricsRepo.findById(id);
+//            return optionalPerformanceMetricsEntity.orElse(null);
+//        }
 
     }
-
-    public PerformanceMetricsEntity findById(int id) {
-        Optional<PerformanceMetricsEntity> optionalPerformanceMetricsEntity = performanceMetricsRepo.findById(id);
-        return optionalPerformanceMetricsEntity.orElse(null);
-    }
-
-    public PerformanceMetricsEntity updatePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity,int id) {
-        PerformanceMetricsEntity existingPerformanceMetrics = findById(id);
-        if(existingPerformanceMetrics!=null) {
-            performanceMetricsEntity.setId(id);
-            return performanceMetricsRepo.save(performanceMetricsEntity);
-        }return null;
-    } // exception for performanceMetrics not saved
-
-    public PerformanceMetricsEntity deletePerformanceMetrics(int id) {
-        PerformanceMetricsEntity performanceMetricsEntity = findById(id);
-        if(performanceMetricsEntity!=null) {
-            performanceMetricsRepo.delete(performanceMetricsEntity);
-            return performanceMetricsEntity;
-        }return null;
-    }
-
-
-
-}
 

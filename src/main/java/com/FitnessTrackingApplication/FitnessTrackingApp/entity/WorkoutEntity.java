@@ -17,5 +17,5 @@ public class WorkoutEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDate workoutDate;
-    private String exerciseDate;
+    private String duration;
 }

@@ -31,9 +31,9 @@ public class PerformanceMetricsController {
     }
 
     @PutMapping
-    public ResponseStructure<PerformanceMetricsEntity>  updatePerformanceMetrics(@RequestBody PerformanceMetricsEntity PerformanceMetrics, @RequestParam int id) {
+    public ResponseStructure<PerformanceMetricsEntity>  updatePerformanceMetrics(@RequestBody PerformanceMetricsEntity performanceMetrics, @RequestParam int id) {
         try {
-            return performanceMetricsService.updatePerformanceMetrics(PerformanceMetrics, id);
+            return performanceMetricsService.updatePerformanceMetrics(performanceMetrics, id);
         }catch (Exception error){
             return new ResponseStructure<>();
         }

@@ -6,6 +6,8 @@ import com.FitnessTrackingApplication.FitnessTrackingApp.utill.ResponseStructure
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/workout")
 public class WorkoutController {
     @Autowired
     WorkoutService service;

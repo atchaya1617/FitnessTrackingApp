@@ -2,51 +2,59 @@ package com.FitnessTrackingApplication.FitnessTrackingApp.service;
 
 import com.FitnessTrackingApplication.FitnessTrackingApp.dao.PerformanceMetricsDao;
 import com.FitnessTrackingApplication.FitnessTrackingApp.entity.PerformanceMetricsEntity;
+import com.FitnessTrackingApplication.FitnessTrackingApp.repository.PerformanceMetricsRepo;
 import com.FitnessTrackingApplication.FitnessTrackingApp.utill.ResponseStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PerformanceMetricsService {
+public class PerformanceMetricsService implements PerformanceMetricsDao{
+
     @Autowired
     PerformanceMetricsDao performanceMetricsDao;
 
-    public ResponseStructure<PerformanceMetricsEntity> savePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity) {
+    @Autowired
+    PerformanceMetricsRepo performanceMetricsRepo;
+
+    @Override
+    public ResponseStructure<PerformanceMetricsEntity> savePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity){
         ResponseStructure<PerformanceMetricsEntity> structure = new ResponseStructure<PerformanceMetricsEntity>();
-        PerformanceMetricsEntity savePerformanceMetrics = performanceMetricsDao.savePerformanceMetrics(performanceMetricsEntity);
-        if(savePerformanceMetrics !=null) {
+        PerformanceMetricsEntity savePerformanceMetrics = performanceMetricsRepo.save(performanceMetricsEntity);
+        if(savePerformanceMetrics!=null){
             structure.setData(savePerformanceMetrics);
-            structure.setMessage("performanceMetrics saved success");
-            structure.setStatus(HttpStatus.CREATED.value());
+            structure.setMessage("PerformanceMetrics saved successfully");
+            structure.setStatus(HttpStatus.OK.value());
             return structure;
-        }return null; // exception performanceMetrics not saved
+        }
+        return null;
     }
 
+@Override
     public ResponseStructure<PerformanceMetricsEntity> findPerformanceMetrics(int id){
         ResponseStructure<PerformanceMetricsEntity> structure = new ResponseStructure<PerformanceMetricsEntity>();
         PerformanceMetricsEntity exPerformanceMetrics = performanceMetricsDao.findById(id);
-        if(exPerformanceMetrics!= null) {
+        if(exPerformanceMetrics!=null){
             structure.setData(exPerformanceMetrics);
-            structure.setMessage("performanceMetrics found with the given id");
-            structure.setStatus(HttpStatus.FOUND.value());
+            structure.setMessage("PerformanceMetrics found for given id");
+            structure.setStatus(HttpStatus.OK.value());
             return structure;
-        }return null; // exception for performanceMetrics not found for the given id
+        }
+        return null;
     }
-
-    public ResponseStructure<PerformanceMetricsEntity> updatePerformanceMetrics(PerformanceMetricsEntity adhar, int id) {
+@Override
+    public ResponseStructure<PerformanceMetricsEntity> updatePerformanceMetrics(PerformanceMetricsEntity performanceMetricsEntity, int id ){
         ResponseStructure<PerformanceMetricsEntity> structure = new ResponseStructure<PerformanceMetricsEntity>();
         PerformanceMetricsEntity exPerformanceMetrics = performanceMetricsDao.findById(id);
-        if(exPerformanceMetrics != null){
+        if(exPerformanceMetrics!=null){
             structure.setData(exPerformanceMetrics);
             structure.setMessage("PerformanceMetrics updated successfully");
             structure.setStatus(HttpStatus.OK.value());
-        return structure;
-            //return dao.updatePerformanceMetrics(exPerformanceMetrics, id);
-        }return null; //exception for PerformanceMetrics not found for the given id
+            return structure;
+        }
+        return null;
     }
-
-
+@Override
     public ResponseStructure<PerformanceMetricsEntity> deletePerformanceMetrics(int id){
         ResponseStructure<PerformanceMetricsEntity> structure = new ResponseStructure<PerformanceMetricsEntity>();
         PerformanceMetricsEntity exPerformanceMetrics = performanceMetricsDao.findById(id);
@@ -56,5 +64,10 @@ public class PerformanceMetricsService {
             structure.setStatus(HttpStatus.OK.value());
             return structure;
         }return null;
+    }
+
+    @Override
+    public PerformanceMetricsEntity findById(int id) {
+        return null;
     }
 }
